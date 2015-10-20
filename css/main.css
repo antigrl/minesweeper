@@ -214,29 +214,3 @@ section {
     transform: translateY(-3px); }
   100% {
     transform: translateY(-6px); } }
-    background-color: #E80C7A; }
-  section .fall {
-    -webkit-animation: fall 0.5s 1 normal ease-in;
-    -webkit-animation-fill-mode: forwards; }
-
-@-webkit-keyframes fall {
-  0% {
-    -webkit-transform: rotateX(-90deg); }
-  100% {
-    -webkit-transform: rotateX(0); } }
-
-@-webkit-keyframes hover {
-  50% {
-    -webkit-transform: translateY(-3px);
-    transform: translateY(-3px); }
-  100% {
-    -webkit-transform: translateY(-6px);
-    transform: translateY(-6px); } }
-
-@keyframes hover {
-  50% {
-    -webkit-transform: translateY(-3px);
-    transform: translateY(-3px); }
-  100% {
-    -webkit-transform: translateY(-6px);
-    transform: translateY(-6px); } }
