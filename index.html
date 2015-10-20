@@ -2,19 +2,40 @@
 <html>
 <head>
   <title>Minesweeper</title>
-
-<!-- bower:css -->
-<!-- endbower -->
-
-<!-- inject:css -->
-<!-- endinject -->
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+  <div class="sidebar">
+    <div class="title"><h1>Minesweeper!</h1></div>
 
-<!-- bower:js -->
-<!-- endbower -->
+    <div class="controls">
+      <label for="num-bombs-input" class="bombs">Number of Bombs</label>
+      <input id="num-bombs-input" placeholder="Enter a number"><button class="num-bombs-preset bomb-numbers" number="10">10</button><button class="num-bombs-preset bomb-numbers" number="20">20</button><button class="num-bombs-preset" number="63">Insane Mode</button>
 
-<!-- inject:js -->
-<!-- endinject -->
+      <button id="start-game" disabled>Play</button>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <section id="mine-grid"></section>
+
+    <div class="result-container" style="display: none;">
+      <div class="winner" style="display: none;">
+        Winner!<br>
+        <i class="icon-trophy"></i>
+      </div>
+
+      <div class="loser" style="display: none;">
+        You lost!<br>
+        :(
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="js/lodash.js"></script>
+  <script src="js/minesweeper.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,40 +1,35 @@
-var gulp    = require('gulp'),
-    util    = require('gulp-util'),
-    wiredep = require('wiredep').stream,
-    inject  = require('gulp-inject'),
-    sass    = require('gulp-sass'),
-    coffee  = require('gulp-coffee'),
-    smaps   = require('gulp-sourcemaps');
+'use strict';
 
-
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var lodashBuilder = require('gulp-lodash-builder');
+var coffee = require('gulp-coffee');
+var gutil = require('gulp-util');
+var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('sass', function () {
-  return gulp.src('sass/main.scss')
-    .pipe(smaps.init())
+  gulp.src('./sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(smaps.write())
-    .pipe(gulp.dest('dest/styles'));
+    .pipe(gulp.dest('./css'));
 });
 
 gulp.task('coffee', function() {
-  gulp.src('scripts/*.coffee')
-    .pipe(smaps.init())
-    .pipe(coffee({bare: true}).on('error', util.log))
-    .pipe(smaps.write())
-    .pipe(gulp.dest('dest/scripts'))
+  gulp.src('./js/*.coffee')
+    .pipe(coffee({bare: true}).on('error', gutil.log))
+    .pipe(gulp.dest('./js/'))
 });
 
-gulp.task('inject', function () {
-    var target = gulp.src('index.html');
-    var sources = gulp.src(['./dest/scripts/*.js', './dest/styles/*.css'], {read: false});
 
-    return target
-        .pipe(wiredep())
-        .pipe(inject(sources))
-        .pipe(gulp.dest('dest'));
+gulp.task('watch', function () {
+  gulp.watch('./sass/*.scss', ['sass'])
+  gulp.watch('./js/*.coffee', ['coffee'])
 });
 
-gulp.task('default', ['sass', 'coffee', 'inject'], function () {
-  gulp.watch('sass/*.scss');
-  gulp.watch('scripts/*.coffee');
+gulp.task('default', ['watch', 'sass', 'coffee'], function() {
+  return gulp.src('css/*.css')
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(gulp.dest('css'));
 });
