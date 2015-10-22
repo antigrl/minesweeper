@@ -1,6 +1,6 @@
 # minesweeper
 
-A simple minesweeper game! 
+A simple minesweeper game! [Play](http://antigrl.github.io/minesweeper/)
 
 * Run ```npm install``` to install dependencies.
 * Sass and coffee is watched and compiled when you run [gulp](http://gulpjs.com/).
